@@ -15,9 +15,10 @@ binds {
 
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+Space hotkey-overlay-title="Run an Application: rofi" { spawn "/home/tenzin/.config/rofi/launcher.sh"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "/home/tenzin/bin/lockscreen.sh"; }
+    Super+Backspace hotkey-overlay-title="Power menu" { spawn "/home/tenzin/.config/rofi/powermenu.sh"; }
     Super+B hotkey-overlay-title="Open browser" { spawn "/home/tenzin/Downloads/zen/zen"; }
 
     // Screenshot
