@@ -198,15 +198,24 @@ binds {
 
     Mod+Q repeat=false { close-window; }
 
-    Mod+Left  { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "focus"; }
+    // Old smart-move bindings (commented out)
+    // Mod+Left  { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "focus"; }
+    // Mod+Right { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "focus"; }
+    // Mod+H     { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "focus"; }
+    // Mod+L     { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "focus"; }
+    // Mod+Shift+H  { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "move"; }
+    // Mod+Shift+L { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "move"; }
+
+    // Normal movement bindings
+    Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
-    Mod+Right { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "focus"; }
-    Mod+H     { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "focus"; }
-    Mod+L     { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "focus"; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+L     { focus-column-right; }
 
-    Mod+Shift+H  { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "move"; }
-    Mod+Shift+L { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "move"; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
 
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
