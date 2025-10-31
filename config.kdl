@@ -136,9 +136,10 @@ window-rule {
 // STARTUP PROGRAMS
 // ════════════════════════════════════════════════════════════════
 
-spawn-at-startup "waybar"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "~/.dotfiles/bin/restore-wallpaper.sh"
+// spawn-at-startup "waybar"
+// spawn-at-startup "swww-daemon"
+spawn-at-startup "dms" "run"
+// spawn-at-startup "~/.dotfiles/bin/restore-wallpaper.sh"
 
 // ════════════════════════════════════════════════════════════════
 // KEYBINDS
