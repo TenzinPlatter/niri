@@ -330,3 +330,13 @@ binds {
 
     Mod+Shift+P { power-off-monitors; }
 }
+
+// ════════════════════════════════════════════════════════════════
+// DEBUG OPTIONS
+// ════════════════════════════════════════════════════════════════
+
+debug {
+    // Force PipeWire to use the invalid modifier instead of DRM modifiers
+    // This fixes format negotiation issues with browsers and screen recorders
+    force-pipewire-invalid-modifier
+}
