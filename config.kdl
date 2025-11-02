@@ -339,4 +339,7 @@ debug {
     // Force PipeWire to use the invalid modifier instead of DRM modifiers
     // This fixes format negotiation issues with browsers and screen recorders
     force-pipewire-invalid-modifier
+
+    // Explicitly use NVIDIA GPU for rendering
+    render-drm-device "/dev/dri/renderD128"
 }
