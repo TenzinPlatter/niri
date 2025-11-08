@@ -30,15 +30,25 @@ input {
 // OUTPUTS
 // ════════════════════════════════════════════════════════════════
 
-output "DP-3" {
-    position x=1080 y=0
-    mode "3440x1440@159.962"
+// output "DP-3" {
+//     position x=1080 y=0
+//     mode "3440x1440@159.962"
+// }
+
+// output "HDMI-A-3" {
+//     position x=0 y=0
+//     mode "1920x1080@74.973"
+//     transform "90"
+// }
+
+output "eDP-1" {
+    position x=1920 y=0
+    mode "1920x1080@60.000"
 }
 
-output "HDMI-A-3" {
+output "DP-2" {
     position x=0 y=0
-    mode "1920x1080@74.973"
-    transform "90"
+    mode "1920x1080@60.000"
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -155,7 +165,7 @@ binds {
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Super+Backspace hotkey-overlay-title="Power menu" { spawn "dms" "ipc" "call" "powermenu" "open"; }
-    Super+B hotkey-overlay-title="Open browser" { spawn "/home/tenzin/Downloads/zen/zen"; }
+    Super+B hotkey-overlay-title="Open browser" { spawn "zen-browser"; }
     Mod+P hotkey-overlay-title="Screenshot" { spawn "/home/tenzin/bin/screenshot.sh"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" { 
