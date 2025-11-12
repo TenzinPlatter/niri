@@ -135,6 +135,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="satty" title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
