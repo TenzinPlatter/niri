@@ -12,6 +12,7 @@ input {
     touchpad {
         tap
         natural-scroll
+        dwt // Disable while typing
     }
 
     mouse {
@@ -30,15 +31,21 @@ input {
 // OUTPUTS
 // ════════════════════════════════════════════════════════════════
 
-output "DP-3" {
-    position x=1080 y=0
-    mode "3440x1440@159.962"
-}
+// output "DP-3" {
+//     position x=1080 y=0
+//     mode "3440x1440@159.962"
+// }
 
-output "HDMI-A-3" {
-    position x=0 y=0
-    mode "1920x1080@74.973"
-    transform "90"
+// output "HDMI-A-3" {
+//     position x=0 y=0
+//     mode "1920x1080@74.973"
+//     transform "90"
+// }
+
+output "eDP-1" {
+    position x=1920 y=0
+    scale 1.2
+    mode "1920x1080@60.000"
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -111,6 +118,11 @@ animations {
 // ════════════════════════════════════════════════════════════════
 
 window-rule {
+    match title="float"
+    open-floating true
+}
+
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
     draw-border-with-background false
@@ -128,6 +140,11 @@ window-rule {
 }
 
 window-rule {
+    match title="satty"
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -136,9 +153,10 @@ window-rule {
 // STARTUP PROGRAMS
 // ════════════════════════════════════════════════════════════════
 
-spawn-at-startup "waybar"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "~/.dotfiles/bin/restore-wallpaper.sh"
+// spawn-at-startup "waybar"
+// spawn-at-startup "swww-daemon"
+spawn-at-startup "dms" "run"
+// spawn-at-startup "~/.dotfiles/bin/restore-wallpaper.sh"
 
 // ════════════════════════════════════════════════════════════════
 // KEYBINDS
@@ -198,15 +216,24 @@ binds {
 
     Mod+Q repeat=false { close-window; }
 
+    // Old smart-move bindings (commented out)
     Mod+Left  { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "focus"; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
     Mod+Right { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "focus"; }
     Mod+H     { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "focus"; }
     Mod+L     { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "focus"; }
-
     Mod+Shift+H  { spawn "/home/tenzin/bin/niri-smart-move.sh" "left" "move"; }
     Mod+Shift+L { spawn "/home/tenzin/bin/niri-smart-move.sh" "right" "move"; }
+
+    // Normal movement bindings
+    // Mod+Left  { focus-column-left; }
+    // Mod+Down  { focus-window-down; }
+    // Mod+Up    { focus-window-up; }
+    // Mod+Right { focus-column-right; }
+    // Mod+H     { focus-column-left; }
+    // Mod+L     { focus-column-right; }
+
+    // Mod+Shift+H { move-column-left; }
+    // Mod+Shift+L { move-column-right; }
 
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
@@ -218,10 +245,10 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+Left  { set-column-width "-10%"; }
+    Mod+Shift+Down  { set-window-height "-10%"; }
+    Mod+Shift+Up    { set-window-height "+10%"; }
+    Mod+Shift+Right { set-column-width "+10%"; }
     Mod+Ctrl+H     { focus-monitor-left; }
     Mod+Ctrl+J     { focus-monitor-down; }
     Mod+Ctrl+K     { focus-monitor-up; }
@@ -320,4 +347,17 @@ binds {
     Mod+Shift+E { quit; }
 
     Mod+Shift+P { power-off-monitors; }
+}
+
+// ════════════════════════════════════════════════════════════════
+// DEBUG OPTIONS
+// ════════════════════════════════════════════════════════════════
+
+debug {
+    // Force PipeWire to use the invalid modifier instead of DRM modifiers
+    // This fixes format negotiation issues with browsers and screen recorders
+    force-pipewire-invalid-modifier
+
+    // Explicitly use NVIDIA GPU for rendering
+    render-drm-device "/dev/dri/renderD128"
 }
